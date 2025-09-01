@@ -1,0 +1,311 @@
+<h1>Welcome, {{ user.username }}</h1>
+
+<div class="dashboard-stats">
+  <p><strong>Total Deposit:</strong> ${{total_deposit}}</p>
+  <p><strong>Total Withdrawal:</strong> ${{total_withdrawal}}</p>
+  <p><strong>Last Deposit:</strong> 
+     {% if last_deposit %}${{ last_deposit.amount }} on {{ last_deposit.created_at }}{% else %}None{% endif %}
+  </p>
+  <p><strong>Last Withdrawal:</strong> 
+     {% if last_withdrawal %}${{ last_withdrawal.amount }} on {{ last_withdrawal.created_at }}{% else %}None{% endif %}
+  </p>
+  <p><strong>Current Balance:</strong> ${{ balance }}</p>
+</div>
+
+<h2>Welcome {{ user.username }}</h2>
+
+<h3>Your Referral Link</h3>
+<p><input type="text" value="{{ user.referral_link }}" readonly></p>
+
+<h3>Your Referrals</h3>
+<ul>
+  {% for referral in user.referrals.all %}
+    <li>{{ referral.username }} (joined: {{ referral.date_joined }})</li>
+  {% empty %}
+    <li>No referrals yet.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'update_profile' %}">update_profile</a>
+<a href="{% url 'my_referal' %}">my_refereal</a>
+
+
+<h2>Welcome, {{ user.username }}</h2>
+
+<h3>Balance Summary</h3>
+<p>Total Deposit: ${{ total_deposit }}</p>
+<p>Total Withdrawal: ${{ total_withdrawal }}</p>
+<p>Current Balance: ${{ balance }}</p>
+<p>Last Deposit: {% if last_deposit %}${{ last_deposit.amount }}{% else %}None{% endif %}</p>
+<p>Last Withdrawal: {% if last_withdrawal %}${{ last_withdrawal.amount }}{% else %}None{% endif %}</p>
+
+<hr>
+
+<h3>Your Deposit History</h3>
+<table>
+    <tr><th>Plan</th><th>Amount</th><th>Status</th><th>Transaction Hash</th><th>Date</th></tr>
+    {% for d in deposits %}
+        <tr>
+            <td>{{ d.plan.name }}</td>
+            <td>${{ d.amount }}</td>
+            <td>{{ d.status }}</td>
+            <td>{{ d.transaction_hash }}</td>
+            <td>{{ d.created_at }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5">No deposits yet.</td></tr>
+    {% endfor %}
+</table>
+
+<h3>Your Withdrawal History</h3>
+<table>
+    <tr><th>Amount</th><th>Status</th><th>Date</th></tr>
+    {% for w in withdrawals %}
+        <tr>
+            <td>${{ w.amount }}</td>
+            <td>{{ w.status }}</td>
+            <td>{{ w.created_at }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="3">No withdrawals yet.</td></tr>
+    {% endfor %}
+</table>
+
+<p><a href="{% url 'request_withdrawal' %}">Request a Withdrawal</a></p>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Referrals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">Client Referrals</h1>
+
+        <table class="table table-striped table-hover shadow-sm rounded">
+            <thead class="table-dark">
+                <tr>
+                    <th>Client</th>
+                    <th>Referred Person</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for referral in referrals %}
+                <tr>
+                    <td>{{ referral.referrer.name }}</td>
+                    <td>{{ referral.referred_name }}</td>
+                    <td>{{ referral.referred_email }}</td>
+                    <td>
+                        {% if referral.status == "pending" %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% elif referral.status == "signed_up" %}
+                            <span class="badge bg-info text-dark">Signed Up</span>
+                        {% elif referral.status == "converted" %}
+                            <span class="badge bg-success">Converted</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ referral.created_at|date:"Y-m-d H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No referrals yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ user.username }}!</h2>
+
+    <h3>Your Referral Link:</h3>
+    <p><input type="text" value="{{ referral_link }}" readonly style="width:300px;"></p>
+
+    <h3>Users you referred:</h3>
+    <ul>
+        {% for u in referrals %}
+            <li>{{ u.username }}</li>
+        {% empty %}
+            <li>No referrals yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- header_dashboard -->
+    <div class="header_dashboard">
+
+        <div>
+          <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+          <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close">
+        </div>
+
+         <div class="removebg_close">
+            <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="removebg">
+            <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="close">
+        </div>
+
+    </div>
+
+    <div class="body_container">
+
+        <div class="buger">
+            <div class="img_section">
+                <br>
+                <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDREW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            
+                
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="account">
+                    <h2>Account Balance</h2>
+                    <h1>USD   ${{ balance }}</h1>
+            
+                    <div class="plans">
+                        <a href="deposit.html">Brozen</a>
+                        <a href="deposit.html">SlIver</a>
+                        <a href="deposit.html">Golden</a>
+                        <a href="deposit.html">Promo</a>
+                        
+                    </div>
+                    <br>
+                    <div class="total">
+                        <div>
+                            <br>
+                            <h4>Active Deposit</h4>
+                            
+                            <p>${{ last_deposit.amount }}</p>
+                        </div>
+                        <div>
+                            <br>
+                            <h4>Total Deposit</h4>
+                            <p>${{ total_deposit}}</p>
+                        </div>
+                        <div>
+                            <br>
+                            <h4>Earning Total</h4>
+                            <p>$100.00</p>
+                        </div>
+                        <div>
+                            <br>
+                            <h4>Total Withdraw</h4>
+                            <p>{{ total_withdrawal }} </p>
+                        </div>
+                        <div>
+                            <br>
+                            <h4>Pending Withdraw</h4>
+                            <p>$100.00</p>
+                        </div>
+                        <div>
+                            <br>
+                            <h4>Last Withdraw</h4>
+                            <p>     {% if last_withdrawal %}${{ last_withdrawal.amount }} on {{ last_withdrawal.created_at }}{% else %}None{% endif %}
+</p>
+                        </div>
+                    </div>
+                </div>
+          
+            
+                <div class="profile">
+
+                    <div class="meta">
+                        <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
+                        <h3>Jorge</h3>
+                        <div class="oooo">
+                            <p>Account Status</p>
+                        </div>
+                    </div>
+                    
+                </div>
+        </div>
+
+        <div class="buger_2">
+            <div class="img_section_2">
+                <br>
+                <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDREW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            
+                
+            </div>
+        </div>
+
+        
+   </div>
+
+   <div class="Copyright">
+    <p>Copyright © 2022</p>
+   </div>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

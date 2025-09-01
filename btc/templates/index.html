@@ -1,0 +1,607 @@
+{% comment %} {% load static %} {% endcomment %}
+ {% comment %} <h2>Welcome, {{ user.username }}!</h2>
+<h1>Available Plans</h1>
+<ul>
+  {% for plan in plans %}
+    <li>
+      <h2>{{plan.name}}</h2>
+      <p>{{plan.description}}</p>
+      <p>Min Deposit: ${{plan.minmum_deposit}}</p>
+      <p>Min Deposit: ${{plan.maxmum_deposit}}</p>
+      <p>Max Investment: {{plan.return_rate}}</p>
+      <p>ROI:{{plan.duration}}%</p>
+      <a href="{% url 'plan_detail' plan.pk %}">View Plan</a>
+      <a href="{% url 'dashboard' %}">dashboard</a>
+      <a href="{% url 'make_deposit' plan.pk %}">make_deposit</a>
+    </li>
+  {% endfor %}
+  {% for plan in plans %}
+  <a href="{% url 'plan_detail' plan.pk %}">{{ plan.name }}</a>
+  {% endfor %}
+</ul>
+<a href="{% url 'update_profile' %}">update_profile</a>
+ {% for plan in plans %}
+    <div class="plan">
+          <div class="plan-header bronze">
+              <h2>{{plan.name}}</h2>
+          </div>
+        <div class="plan-body">
+            <h2>${{plan.minmum_deposit}}</h2>
+            <ul>
+                <li>Basic Investment Strategy</li>
+                <li>Monthly {{plan.duration}}</li>
+                <li>{{plan.return_rate}}</li>
+                <li>Email Support</li>
+            </ul>
+           <a href="{% url 'make_deposit' plan.pk %}">Invest</a>
+        </div>
+    </div> 
+      {% endfor %}
+      <a href="{% url 'logout' %}">Logout</a>  {% endcomment %}
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  
+
+    <!-- header -->
+    <div class="header">
+
+       <div class="logo">
+          <img src="{% static 'Img/WhatsApp_Image_2025-07-12_at_03.27.15-removebg-preview.png' %}" alt="">
+       </div>
+
+       <nav>
+         <a href="index.html">Home</a>
+         <a href="about_us.html">About</a>
+         <a href="Sign_In.html">Login</a>
+         <a href="Sign_Up.html">Signup</a>
+         <a href="help.html">Help</a>
+         <a href="contact.html">Contact us</a>
+       </nav>
+
+
+       
+
+       <div class="menu">
+          <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+          <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close" class="icons8-close">
+       </div>
+
+    </div>
+
+
+
+
+
+    <nav class="nav_second">
+         <a href="index.html">Home</a>
+         <a href="about_us.html">About</a>
+         <a href="Sign_In.html">Login</a>
+         <a href="Sign_Up.html">Signup</a>
+         <a href="help.html">Help</a>
+         <a href="contact.html">Contact us</a>
+    </nav>
+
+    <div class="video-bg-container">
+      <video autoplay loop muted playsinline>
+          <source src="{% static 'video/204306-923909642_small.mp4' %}" type="video/mp4" />
+          Your browser does not support the video tag.
+      </video>
+
+      
+
+      <div class="overlay-content">
+
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    {
+                        "description": "",
+                        "proName": "BITSTAMP:BTCUSD"
+                    },
+                    {
+                        "description": "",
+                        "proName": "TRADENATION:TRONUSD"
+                    },
+                    {
+                        "description": "",
+                        "proName": "BINANCE:ETHUSDT"
+                    },
+                    {
+                        "description": "",
+                        "proName": "COINBASE:ETHUSD"
+                    }
+                ],
+                "showSymbolLogo": true,
+                "isTransparent": true,
+                "displayMode": "adaptive",
+                "colorTheme": "light",
+                "locale": "en"
+            }
+            </script>
+        </div>
+        
+          <!-- Your content like text, buttons etc. -->
+          <h1 data-aos="fade-up">Welcome To ApexaTrading</h1>
+          <br>
+          <p data-aos="fade-up">Empowering Traders, One Trade at a Time</p>
+
+          <div class="sign_in_button" data-aos="fade-up">
+            <a href="{% url 'register' %}">Sign up</a>
+            <a href="{% url 'login' %}">Sign in</a>
+          </div>
+      </div>
+    </div>
+   
+    <!-- hero-section -->
+   
+    <div class="hero-section ">
+        <div class="hero-slidee active" style="background-image: url({% static 'Img/mapbox-D8yv3j37S9Y-unsplash.jpg' %}); height: 100vh;">
+            <div class="overlay"></div>
+            <div class="hero-text"><p>Invest in Crypto Today</p></div>
+        </div>
+        
+    </div>
+    <!-- hero-section -->
+
+
+    <!-- trade -->
+    <div class="trade">
+
+       <div data-aos="fade-up-right">
+            <h1>Trade with confidence on the 
+            <br>world’s leading friendly 
+            <br>Sterlions trading platform</h1>
+            <br>
+            <p>An investment with Apexa Corps is a smart one, we provide 
+            <br>high liquidity of financial transactions due to the wise 
+            <br>use of well analysed investment strategies as well as 
+            <br>diversification into highly profitable financial markets . 
+            <br>In the world, changes happen every day. Everyone wants to 
+            <br>build a solid foundation for themselves and their families. 
+            <br>Everyone thinks about the future and with our team of 
+            <br>experienced and qualified financial analysts who are 
+            <br>developing new strategies, Apexa Corps provides guarantees 
+            <br>regarding reliability of investment into stable financial 
+            <br>markets which in turn yeilds good profit returns with Zero 
+            <br>risk. Here at Apexa Corps, we love to serve as your financial 
+            <br>partner and with just over $9 trillion in assets under management
+            <br> as of July 2021 Apexa Corps is licensed and regulated across 
+            <br>multiple jurisdictions and operates globally with 30 offices in 
+            <br>70 countries and clients in over 150 countries worldwide. Join 
+            <br>our team and help build the future as Apexa Corps utilizes 
+            <br>expertise & knowledge to ensure investors have maximum returns 
+            <br>through our developed strategies.Apexa Corps originated and was 
+            <br>designed 1984 and launched into cryptocurrency in the year 2016 
+            <br>and will be and stay in existence in the crypto market for as long 
+            <br>as cryptocurrency remains in existence because Cryptocurrency is 
+            <br>the future of crypto digital market..</p>
+       </div>
+       
+       <div class="trade_image_area" data-aos="fade-up-left">
+          <img src="{% static 'Img/save-energy-7382279_1280.jpg' %}" alt="">
+       </div>
+
+    </div>
+    <!-- trade ends here -->
+
+<div id="investmentBox"></div>
+
+
+
+
+    <!-- charting_your -->
+    <div class="charting_your">
+
+        
+
+        <div class="charting_area active">
+            <div class="chart_img">
+                <img src="{% static 'Img/_0c78e652-4069-4d16-96c5-e8652db56bb6.jpg' %}" alt="">
+            </div>
+
+
+
+            <div class="chart_text">
+                <h2>Charting Your Course 
+                <br>to Financial Freedom</h2>
+                <br>
+                <p>Short selling a digital asset allows Miners to benefit from 
+                  <br>market movement by gaining more control over their profits
+                </p>
+                <br>
+                <img src="{% static 'Img/avater1.png' %}" alt="">
+            </div>
+        </div>
+
+
+        <div class="charting_area ">
+            <div class="chart_img">
+                <img src="{% static 'Img/_b45bee64-a22c-47b6-9c88-7c996e9830b4.jpg' %}" alt="">
+            </div>
+
+
+
+            <div class="chart_text">
+                <h2>OUR Mission</h2>
+                <br>
+                <p>Leading the quest to change the world as the trusted
+                <br> sustainability partner creating valued, single-sourced, 
+                <br>efficient energy solutions delivered with passion, 
+                <br>expertise, teamwork and a relentless focus on customer 
+                <br>satisfaction. All these and more we tend to achieve through
+                <br> a team of well dedicated personnel. At metro hedge, we Have
+                <br> the flexibility to remain ahead of a changing environment 
+                <br>by being entrepreneurial, passionate, open, innovative and smart.
+                </p>
+                <br>
+                <img src="{% static 'Img/./avater1.png' %}" alt="">
+            </div>
+        </div>
+
+
+        <div class="charting_area ">
+            <div class="chart_img">
+                <img src="{% static 'Img/_246fee6e-8ad1-4071-95ea-a73a52678157.jpg' %}" alt="">
+            </div>
+
+
+
+            <div class="chart_text">
+                <h2>Quick deposits, <br> quick withdrawals</h2>
+                <br>
+                <p>Over 4 superb options for depositing and withdrawing money through 
+                <br>Bitcoin, Ethereum & USDT.
+                </p>
+                <br>
+                <img src="{% static 'Img/avater1.png' %}" alt="">
+            </div>
+        </div>
+
+
+    </div>
+    <!-- charting_your end here -->
+
+
+
+
+    
+
+
+     
+    <div class="apexa_corps" >
+        <h2>APEXA CORPS FINANCIAL MARKET FEATURES</h2>
+        <br>
+        <div class="features">
+
+            <div data-aos="fade-up">
+                <img src="{% static 'Img/save-energy-7382279_1280.jpg' %}" alt="">
+                <br>
+                <br>
+                <h3>REAL ESTATE</h3>
+                <br>
+                <p>A real estate limited partnership (RELP) is 
+                <br>similar to a real estate investment group. 
+                <br>It is an entity formed to buy and hold a 
+                <br>portfolio of properties, or sometimes just
+                <br> one property. However, RELPs exist for a 
+                <br>finite number of years.We as experienced property
+                <br>manager or real estate development firm serves as the
+                <br>general partner. Our investors are then sought to 
+                <br>provide financing for the real estate project, in 
+                <br>exchange for a share of ownership as limited partners. 
+                <br>The partners recieves periodic distributions from income
+                <br>generated by the RELP’s properties. <br>
+                "Apexa Corps is here to serve you"</p>
+            </div>
+
+            <div data-aos="fade-up">
+                <img src="{% static 'Img/bitcoin-7678816_1280.jpg' %}" alt="">
+                <br>
+                <br>
+                <h3>CRYPTOCURRENCY MINING</h3>
+                <br>
+                <p>Cryptocurrency as a digital or virtual currency 
+                <br>is secured by cryptography, which makes it nearly 
+                <br>impossible to counterfeit or double-spend. Many 
+                <br>cryptocurrencies are decentralized networks based 
+                <br>on blockchain technology, a distributed ledger 
+                <br>enforced by a disparate network of computers. 
+                <br>A defining feature of cryptocurrencies is that 
+                <br>they are generally not issued by any central 
+                <br>authority, rendering them theoretically immune 
+                <br>to government interference or manipulation. 
+                <br>Cryptocurrencies can be classified as (traded) 
+                <br>assets, means of exchange, and means of storage. 
+                <br>This features make them traded on exchanges.
+                <br>In our crypto portfolios, we select coins with high 
+                <br>prospects using fundamental and technical analysis 
+                <br>to determine which coins will thrive, and include 
+                <br>them in our mining stations. <br>
+                "Apexa Corps is here to serve you"</p>
+            </div>
+
+            <div data-aos="fade-up">
+                <img src="{% static 'Img/save-energy-7382279_1280.jpg' %}" alt="">
+                <br>
+                <br>
+                <h3>RENEWABLE ENERGY</h3>
+                <br>
+                <p>Precious metals are precious because they 
+                <br>are rare. There is a limited amount of these 
+                <br>minerals produced each year, and scarcity is 
+                <br>the reason for their value. The three major 
+                <br>precious metals that trade on futures exchanges 
+                <br>around the world are gold, silver, and platinum.
+                <br>Gold is the most popular precious metal in the 
+                <br>world as individuals and governments, over thousands 
+                <br>of years, ascribe tremendous value to the metal that 
+                <br>reflects light like no other. Gold has a dual role — it 
+                <br>has industrial uses as well as financial applications.
+                <br>Like any natural resource, mining will slow until 
+                <br>eventually our precious metal reserves are depleted. 
+                <br>They will not last forever. Not only does this make 
+                <br>precious metals scarce, the demand for them will 
+                <br>increase since we have started using them in everyday 
+                <br>applications. From computers to medical supply, precious 
+                <br>metals, like silver, are vital for these industries. <br>
+                "Apexa Corps is here to serve you"</p>
+            </div>
+
+            <div data-aos="fade-up">
+                <img src="{% static 'Img/gold-nugget-2269846_1280-removebg-preview.png' %}" alt="">
+                <br>
+                <br>
+                <h3>GOLD</h3>
+                <br>
+                <p>At Apexa Corps , we are committed to the 
+                <br>future and this has been our driving force. 
+                <br>we are at the dawn of a new era of energy, 
+                <br>one that is exciting and open to participation, 
+                <br>where everyone is connected and has the possibility 
+                <br>to do their part in tackling the world’s biggest 
+                <br>challenges.
+                <br>As a global leader in the energy sector, we’re driving 
+                <br>the energy transition from fossil fuels to renewables. 
+                <br>It’s a just energy transition that is accessible to all. 
+                <br>Green clean and sustainable Energy. <br>
+                "Apexa Corps is here to serve you"</p>
+            </div>
+           
+        </div>
+
+    </div>
+    <!-- apexa_corps end here -->
+
+
+
+<!-- investment -->
+     {% include "invest.html" %}
+
+
+
+
+    
+   
+    
+    <!-- payment -->
+    <div class="payment">
+        <h1>PAYMENT METHOD</h1>
+         <br>
+        <div class="method_OF_payment">
+            <div>
+               <h2>Bitcoin</h2>
+               <br>
+               <p>Lorem ipsum dolor sit amet, consectetur 
+                <br>adipisicing elit. Qui iure iste animi 
+                <br>cumqueinventore quia aliquam alias 
+                <br>distinctio deserunt architecto, id 
+                <br>molestias voluptas ex praesentium 
+                <br>sapiente neque repellat possimus 
+                 <br>libero!</p>
+                <br>
+               <img src="{% static 'Img/IMG_20240917_155500_542.jpg' %}" alt="">
+            </div>
+
+            <div>
+                <br>
+               <h2>Ethereum</h2>
+               <br>
+               <p>Lorem ipsum dolor sit amet, consectetur 
+                <br>adipisicing elit. Qui iure iste animi 
+                <br>cumqueinventore quia aliquam alias 
+                <br>distinctio deserunt architecto, id 
+                <br>molestias voluptas ex praesentium 
+                <br>sapiente neque repellat possimus 
+                 <br>libero!</p>
+                <br>
+               <img src="{% static 'Img/photo-1626162987518-4fee900a9323.avif' %}" alt="">
+            </div>
+
+            <div>
+                <br>
+               <h2>Bitcoin</h2>
+               <br>
+               <p>Lorem ipsum dolor sit amet, consectetur 
+                <br>adipisicing elit. Qui iure iste animi 
+                <br>cumqueinventore quia aliquam alias 
+                <br>distinctio deserunt architecto, id 
+                <br>molestias voluptas ex praesentium 
+                <br>sapiente neque repellat possimus 
+                 <br>libero!</p>
+                <br>
+               <img src="{% static 'Img/IMG_20240917_155500_542.jpg' %}" alt="">
+            </div>
+           
+        </div>
+    </div>
+    <!-- payment end here -->
+
+
+
+
+
+        <!-- hero-container -->
+    <div class="hero-container">
+        <div class="hero-slide active" style="background-image: url({% static 'Img/mapbox-D8yv3j37S9Y-unsplash.jpg' %}); height: 100vh;">
+            <div class="overlay"></div>
+            <div class="hero-text">Invest in Crypto Today</div>
+        </div>
+        <div class="hero-slide" style="background-image: url({% static 'Img/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg' %}); height: 100vh;">
+            <div class="overlay"></div>
+            <div class="hero-text">Secure & Fast Transactions</div>
+        </div>
+        <div class="hero-slide" style="background-image: url({% static 'Img/uk-black-tech-uZyE3w7khzw-unsplash.jpg' %}); height: 100vh;">
+            <div class="overlay"></div>
+            <div class="hero-text">The Future is Decentralized</div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Mining  -->
+    <div class="minig">
+      <div>
+        <h1>Diversified Mining</h1>
+        <br>
+        <p>Our state-of-the-art minigsoftware switche between
+            different currency to make always the highest profit
+            Email Support</p>
+      </div>
+      <div>
+        <h1>Good Customer Support</h1>
+        <br>
+        <p>We offer responsive and helpful customer support.
+            We can hepl users quickly resovle any issues they might have,
+            which can improve their overall experice and satisfaction
+            Email Support</p>
+      </div>
+      <div>
+        <h1>Legal & #Registered</h1>
+        <br>
+        <p>Our Organization is legal & register in the CANADA. We are providing investment service to the countries all around the world.
+            Email Support</p>
+      </div>
+      
+    </div>
+    <!-- /* .minig end here */ -->
+
+    <!-- what_customer -->
+    <div class="what_customer">
+
+        <div class="what_customer_img">
+             <img src="{% static 'Img/b6.jpg' %}" alt="">
+        </div>
+
+        <div class="what_customer_text">
+            <h2>What customer <br>say’s about us</h2>
+            <br>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing
+            <br> elit. Porro, assumenda. Dolorem tenetur reprehenderit
+            <br> nobis facere necessitatibus. Quia porro animi earum 
+            <br>rem perferendis est a quisquam. Expedita vitae quo minima
+            <br> labore?
+            </p>
+            <br>
+            <br>
+            <a href="deposit.html">Invest Now</a>
+        </div>
+        <br>
+
+    </div>
+
+   
+
+
+
+    
+    <!-- footer -->
+  <div class="footer">
+
+        <div class="footer_area">
+            <div class="footer_img">
+              <img src="{% static 'Img/WhatsApp_Image_2025-07-12_at_03.27.15-removebg-preview.png' %}" alt="">
+            </div>
+
+            <div class="footer_text">
+                <p>Apexa Corp has molded an all-around 
+                <br>client-driven experience that focuses 
+                <br>on the latest value adding market insights 
+                <br>and customizing our broad range of 
+                <br>investment opportunities to meet the 
+                <br>diverse needs of high net worth and 
+                <br>institutional clients.</p>
+              </div>
+
+              <div class="contact_area">
+                <p>	Contact E-Mail:</p>
+                <p>support@apexacorps.com</p>
+              </div>
+
+              <div class="office">
+                <h1>Office Address:</h1>
+                <p>55 Bay St N, Hamilton, ON L8R 3P7, <br> Canada.</p>
+              </div>
+        </div>
+
+
+        <div class="footer_service">
+            <div>
+              <h1>Our Services</h1>
+            </div>
+
+            <h5>Home</h5>
+            <h5>About Us</h5>
+            <h5>Contact Us</h5>
+            <h5>Faq's</h5>
+        </div>
+
+
+        <div class="footer_Apexa">
+
+            <div>
+              <h1>Apexa Corp</h1>
+            </div>
+
+          <p>Business Number (BN): 813091170. Click 
+          <br>The Link Below To View Our Ontario 
+          <br>Business Corporation Information.</p>
+          <br>
+          <div class="button">
+            <button>Certificate</button>
+          </div>
+
+
+
+        </div>
+  </div>
+  
+
+
+
+
+  <script src="{% static 'js/index.js' %}"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init()</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="investment">
+        <h2>OUR INVESTMENT OFFER TABLE</h2>
+          <br>
+          <br>
+           {% for plan in plans %}
+        <div class="plans">
+            <div data-aos="zoom-in-down">
+                <br>
+                <h2>{{plan.name}}</h2>
+                <br>
+                <h3>{{plan.return_rate}}%<span>Weekly Return On
+                    <br> Investment</span></h3>
+                <br>
+                <p>Minimum Deposit</p>
+                <br>
+                <p>${{plan.minmum_deposit}}</p>
+                <br>
+                <p>Maximum Deposit</p>
+                <br>
+                <p>${{plan.maxmum_deposit}}</p>
+                <br>
+                <p>REFERRAL 7%</p>
+                <br>
+                <p>CONTRACT DURATION</p>
+                <br>
+                <h4>{{plan.duration}}Monthly</h4>
+                <br>
+                <p> Investors are to withdraw profit on <br>weekly
+                    basis and capital after 6 month</p>
+                <br>
+                
+                <a href="{% url 'make_deposit' plan.pk %}">Invest Now</a>
+            </div>
+            
+         {% endfor %}
+    
+        </div>
+    </div>

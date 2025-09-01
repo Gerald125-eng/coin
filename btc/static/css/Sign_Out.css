@@ -1,0 +1,377 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    background:rgb(146, 158, 197);
+    position: fixed;
+    z-index: 99999;
+    padding: 2rem;
+    /* border-bottom: #0facd3 solid 2px; */
+}
+.logo img{
+    width: 8rem;
+    margin-left: 14rem;
+}
+.menu img{
+    width: 1rem;
+}
+nav{
+    display: flex;
+    gap: 3rem;
+}
+
+nav a{
+   text-decoration: none;
+   font-size: large;
+   color: white;
+}
+
+nav a:hover{
+  color: rgb(47, 115, 240);
+  transition: 1s ease;
+}
+
+.nav_second{
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    top: 6.2rem;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.85));
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    /* text-align: center; */
+    position: absolute;
+    position: fixed;
+    color: #000;
+    z-index: 999999999;
+    display: none;
+}
+
+.icons8-close{
+        display: none;
+    }
+@media (min-width : 320px) and  (max-width: 1024px){
+    nav{
+        display: none;
+    }
+    .logo img{
+    width: 6rem;
+    margin-left: 0;
+   }
+   .header{
+    top: -0.2rem;
+    padding: 0.5rem;
+    height: 80px;
+   }
+   .nav_second{
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 4.5rem;
+    z-index: 99999;
+    display: none;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.85));
+   }
+}
+
+
+
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #f9f9f9;
+}
+
+/* Page Container */
+.contact-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+
+/* Contact Container */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+/* Contact Info */
+.contact-info {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Contact Form */
+.contact-form {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+form{
+    margin-top: 50px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.Message{
+    display: flex;
+    gap: 2rem;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+.content_container{
+    display: flex;
+    width: 100%;
+   justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+
+.container {
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.content{
+    padding: 1rem;
+    /* margin-left: 15rem; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #09e3e3;
+    background: linear-gradient(90deg, #1aacdd, #0facd3,  #0841d1, #4fbbbb,  #aebb4f);
+    background-size: 500%;
+    z-index: 1;
+    animation: blink 20s linear infinite alternate;
+}
+
+@keyframes blink{
+    from{
+    background-position: 0%;
+    }
+    to{
+    background-position: 500%;
+    }
+}
+
+.contact-details, .contact-form {
+    flex: 1;
+    min-width: 300px;
+    
+}
+
+.contact-details{
+  margin-top: 5rem;
+    
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.contact-details img{
+    width: 350px;
+    height: 400px;
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .content{
+        flex-direction: column;
+        height: fit-content;
+    }
+    .contact-details img{
+        width: 300px;
+        height: 600px;
+    }
+}
+
+
+.Message{
+    display: flex;
+    gap: 2rem;
+}
+.contact_form h2{
+    margin-top: 80px;
+}
+
+.contact-form div img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+/* footer_div */
+
+
+.footer{
+    padding: 6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    background: #223858;
+    gap: 2rem;
+}
+
+.footer_img img{
+    width: 8rem;
+}
+
+.footer_text p{
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.contact_area{
+    padding: 2rem;
+    color: white;
+}
+.office h1{
+    color: rgb(22, 112, 231);
+    font-size: 1.5rem;
+}
+
+.office p{
+    color: white;
+    line-height: 1.5rem;
+}
+
+.footer_service h1{
+    padding: 2rem;
+    color: white;
+}
+
+.footer_service h5{
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: white;
+    margin-left: 1.5rem;
+}
+
+.footer_Apexa h1{
+    padding: 1.9rem;
+    color: white;
+}
+
+.footer_Apexa p{
+    padding: 0.5rem;
+    line-height: 1.5rem;
+    margin-left: 1.5rem;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.button button{
+    margin-left: 1.5rem;
+    border: none;
+    padding: 1rem 5rem;
+    border-radius: 1em;
+    background: rgb(231, 138, 31);
+}
+
+.button button:hover{
+    border: orange solid 2px;
+    background: transparent;
+    color: orange;
+    transition: 1s ease;
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .footer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .footer_service h1{
+       font-size: 20px;
+    }
+    .footer_Apexa h1{
+       font-size: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

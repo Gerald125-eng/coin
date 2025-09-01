@@ -1,0 +1,1000 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family:sans-serif ;
+}
+
+
+/* header */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    background:rgb(146, 158, 197);
+    position: fixed;
+    z-index: 99999;
+    padding: 2rem;
+    /* border-bottom: #0facd3 solid 2px; */
+}
+.logo img{
+    width: 8rem;
+    margin-left: 14rem;
+}
+.menu img{
+    width: 1rem;
+}
+nav{
+    display: flex;
+    gap: 3rem;
+}
+
+nav a{
+   text-decoration: none;
+   font-size: large;
+   color: white;
+}
+
+nav a:hover{
+  color: rgb(47, 115, 240);
+  transition: 1s ease;
+}
+
+.nav_second{
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    top: 6.2rem;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.85));
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    /* text-align: center; */
+    position: absolute;
+    position: fixed;
+    color: #000;
+    z-index: 999999999;
+    display: none;
+    transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+    /* opacity: 0; */
+}
+
+
+.icons8-close{
+        display: none;
+    }
+@media (min-width : 320px) and  (max-width: 1024px){
+    nav{
+        display: none;
+    }
+    .logo img{
+    width: 6rem;
+    margin-left: 0;
+   }
+   .header{
+    top: -0.2rem;
+    padding: 0.5rem;
+    height: 80px;
+   }
+   .nav_second{
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 4.5rem;
+    z-index: 99999;
+    display: none;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.85));
+   }
+}
+
+@media (min-width : 768px) and  (max-width: 1024px){
+    nav{
+        display: none;
+    }
+    .logo img{
+    width: 6rem;
+    margin-left: 0;
+   }
+   .charting_your{
+    display: none;
+   }
+}
+
+
+
+
+/* investmentBox */
+
+ #investmentBox {
+      position: fixed;
+      height: 80px;
+      width: 20%;
+      text-align: center;
+      bottom: 20px;
+      left: 20px;
+      background-color: #1d3557;
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+      z-index: 9999;
+    }
+
+    #investmentBox.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+  @media (min-width : 320px) and  (max-width: 1024px){
+     #investmentBox {
+      position: fixed;
+      height: 80px;
+      width: 85%;
+      top: 8em;
+      text-align: center;
+      bottom: 20px;
+      left: 20px;
+      background-color: #1d3557;
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+      z-index: 9999;
+    }
+  }  
+
+/* video-bg-container */
+.video-bg-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-bg-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.overlay-content h1{
+    font-size: 3rem;
+    margin-top: 10rem;
+}
+
+.overlay-content {
+  top: 0;
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding-top: 20vh;
+}
+
+
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+   
+}
+
+
+
+
+
+.sign_in_button{
+    padding: 3rem;
+    gap: 9px;
+    display: flex;
+    justify-content: center;
+}
+
+.sign_in_button a{
+    text-decoration: none;
+    background: white;
+    color: #000;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+}
+
+.sign_in_button a:hover{
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+    transition: 1s ease;
+}
+
+
+
+.hero-section {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  line-height: 1.5rem;
+  transition: background-image 1s ease-in-out;
+}
+
+.hero-content {
+  background-color: rgba(129, 126, 126, 0.5); 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hero-content a {
+  background-color: black;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-content  h1{
+    line-height: 1.5rem;
+}
+
+.blue{
+    color: rgb(44, 116, 224);
+}
+
+
+
+
+/* <!-- trade --> */
+.trade{
+    width: 100%;
+    justify-content: center;
+    gap: 5em;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    padding: 5rem;
+}
+
+.trade h1{
+    font-size: 40px;
+}
+.trade p{
+    font-size: 15px;
+    line-height: 1.5rem;
+}
+
+.trade_image_area img{
+    width: 30rem;
+    height: 33rem;
+}
+
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+   .trade h1{
+    font-size: 2em;
+    }
+    .trade p{
+        font-size: 15px;
+    }
+    .trade{
+        flex-wrap: wrap;
+    }
+    .trade_image_area{
+        display: none;
+    }
+
+    .sign_in_button a{
+    background: white;
+    color: #000;
+    padding: 0.8rem 2rem;
+    border-radius: 1rem;
+   }
+   
+}
+/* trade ends here  */
+
+
+
+
+
+
+/* charting_your */
+
+.charting_your{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.charting_area{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  opacity: 0;
+  gap: 5rem;
+  transition: opacity 1s ease-in-out;
+  background-color: #fdfdfd;
+}
+
+
+.charting_area.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.chart_img img{
+    width: 500px;
+    height: 600px;
+}
+.chart_text h2{
+   font-size: 35px;
+}
+.chart_text p{
+   font-size: 20px;
+   line-height: 1.5rem;
+}
+.chart_text img{
+   border-radius: 50px;
+}
+
+.chart_text img{
+    width: 50px;
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .charting_your{
+        display: none;
+    }
+
+}
+
+@media (min-width : 768px) and  (max-width: 1024px){
+  .charting_your{
+    display: none;
+  }
+}
+
+
+
+
+.hero-section  {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+
+  .hero-slidee {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-slidee.active {
+      opacity: 1;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 15%;
+      left: 15%;font-size: 20pc;
+      top: 9em;
+      color: white;
+      font-size: 3rem;
+      animation: slideUp 1s ease-out;
+    }
+
+    .hero-text p{
+        font-size: 30px;
+    }
+
+
+
+
+
+
+/* hero-container  */
+
+.hero-container {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 15%;
+      left: 20%;
+      top: 9em;
+      color: white;
+      font-size: 3rem;
+      animation: slideUp 1s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .hero-text {
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      top: 9em;
+      color: white;
+      font-size: 3rem;
+      animation: slideUp 1s ease-out;
+    }
+}
+
+/* apexa_corps */
+.apexa_corps{
+    width: 100%;
+    height: fit-content;
+    padding: 3rem;
+   
+}
+.features{
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 8rem;
+    
+}
+
+
+.features div img{
+    width: 15rem;
+    height: 20rem;
+}
+
+
+.features div p{
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+.apexa_corps h2{
+    text-align: center;
+}
+
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .apexa_corps h2{
+        font-size: 20px;
+    }
+    .features{
+        display: grid;
+        padding: 3rem;
+        grid-template-columns: repeat(1,300px);
+        justify-content: center;
+        align-items: center;
+    }
+    .apexa_corps{
+        width: 100%;
+        height: fit-content;
+        padding: 3rem;
+        
+    }
+    
+    
+}
+
+@media (min-width : 768px) and  (max-width: 1024px){
+    .features{
+        display: grid;
+        grid-template-columns: repeat(2,300px);
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+
+/* apexa_corps end here  */
+.investment{
+    width: 100%;
+    height: fit-content;
+    background: #086885;
+    padding: 5rem;
+    flex: content;
+    text-align: center;
+}
+
+.investment h2{
+    color: white;
+}
+
+.plans{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.plans h3{
+    font-size: 30px;
+}
+
+span{
+    font-size: 15px;
+}
+
+
+
+.plans h2{
+    margin-top: 2rem;
+}
+
+.plans div{
+    width: 290px;
+    height: 560px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(100, 99, 99);
+}
+
+.plans div:hover{
+    background: #2c2c2c;
+    transition: 0.5s ease-in-out;
+    color: white;
+}
+
+
+.plans div a{
+    padding: 8px 20px;
+    background: rgb(10, 20, 208);
+    border-radius: 5px;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.plans div a:hover{
+    border: solid blue 2px;
+    background: white;
+    transition: 1s ease;
+    color:rgb(13, 30, 211);
+}
+.plans h2{
+    color: blue;
+}
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .plans{
+        flex-wrap: wrap;
+        height: fit-content;
+        gap: 50px;
+
+    }
+    .investment{
+        height: fit-content;
+        padding: 2rem;
+    }
+
+    .plans div{
+        width: 280px;
+        height: 580px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgb(23, 7, 7);
+    }
+}
+
+@media (min-width : 768px) and  (max-width: 1024px){
+   .plans{
+        flex-wrap: wrap;
+        height: fit-content;
+        gap: 50px;
+
+    }
+    
+}
+
+
+
+
+
+/* payment */
+.payment{
+    width: 100%;
+    height: fit-content;
+    flex: content;
+    padding: 5rem;
+    /* text-align: center; */
+}
+.payment h1{
+    text-align: center;
+}
+
+.method_OF_payment{
+    display: flex;
+    justify-content: center;
+    text-align: none;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+
+
+.method_OF_payment div img{
+    width: 300px;
+    height: 265px;
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .method_OF_payment{
+        flex-wrap: wrap;
+        justify-content:space-between;
+        gap: 2em;
+    }
+    .payment{
+        height: fit-content;
+        padding: 1rem;
+        margin-top: 5rem;
+    }
+    .method_OF_payment div img{
+        width: 300px;
+        height: 220px;
+    }
+    
+}
+
+@media (min-width : 768px) and  (max-width: 1024px){
+
+}
+/* payment end here */
+
+
+
+
+
+
+
+/* Mining */
+.minig{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    padding: 5rem;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.minig div{
+    /* padding: 2em; */
+    width: 390px;
+    height: 350px;
+    background: white;
+    box-shadow: 5px 5px 15px rgb(23, 7, 7);
+    background: linear-gradient(90deg, #176edf, #0facd3, #ab9db0, #89a2e3, #14d3d3);
+    background-size: 500%;
+    z-index: 1;
+    animation: blink 20s linear infinite alternate;
+    border-radius: 10px;
+}
+
+.minig div h1{
+    margin-top: 80px;
+    color: aliceblue;
+}
+.minig div p{
+    /* margin-top: 80px; */
+    line-height: 1.5rem;
+    color: white;
+}
+@keyframes blink{
+    from{
+      background-position: 0%;
+    }
+    to{
+      background-position: 500%;
+    }
+}
+@media (min-width : 320px) and  (max-width: 1024px){
+    .minig{
+        padding: 3em;
+       flex-wrap: wrap;
+        height: fit-content;
+        justify-content: center;
+    }
+    .minig div{
+        width: 300px;
+        height: 250px;
+    }
+    .minig div h1{
+        margin-top: 30px;
+        font-size: 20px;
+        color: white;
+    }
+}
+
+
+/* .minig end here */
+
+
+
+
+
+
+/* what_customer */
+
+.what_customer{
+    width: 100%;
+    height: fit-content;
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.what_customer_img img{
+    width: 600px;
+    height: 500px;
+}
+.what_customer_text h2{
+    font-size: 50px;
+}
+.what_customer_text p{
+    line-height: 1.5rem;
+    font-size: 20px;
+}
+.what_customer_text a{
+    font-size: 20px;
+    padding: 10px 20px;
+    background: blue;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    /* transition: 0.1; */
+}
+
+.what_customer_text a:hover{
+    border: solid blue 2px;
+    background: white;
+    color:rgb(13, 30, 211);
+    transition: 1s ease;
+}
+@media (min-width : 320px) and  (max-width: 1024px){
+    .what_customer{
+        flex-wrap: wrap;
+        height: fit-content;
+        margin-top: 30px;
+        /* height: 80vh; */
+    }
+    .what_customer .what_customer_img img{
+        width: 300px;
+        height: 300px;
+    }
+    .what_customer_text h2{
+        font-size: 30px;
+    }
+    .what_customer_text p{
+        font-size: 15px;
+    }
+}
+/* <!-- what_customer end here --> */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer_div */
+
+
+.footer{
+    padding: 6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    background: #223858;
+    gap: 2rem;
+}
+
+.footer_img img{
+    width: 8rem;
+}
+
+.footer_text p{
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.contact_area{
+    padding: 2rem;
+    color: white;
+}
+.office h1{
+    color: rgb(22, 112, 231);
+    font-size: 1.5rem;
+}
+
+.office p{
+    color: white;
+    line-height: 1.5rem;
+}
+
+.footer_service h1{
+    padding: 2rem;
+    color: white;
+}
+
+.footer_service h5{
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: white;
+    margin-left: 1.5rem;
+}
+
+.footer_Apexa h1{
+    padding: 1.9rem;
+    color: white;
+}
+
+.footer_Apexa p{
+    padding: 0.5rem;
+    line-height: 1.5rem;
+    margin-left: 1.5rem;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.button button{
+    margin-left: 1.5rem;
+    padding: 1rem 5rem;
+    border-radius: 1em;
+    background: rgb(231, 138, 31);
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .footer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .footer_service h1{
+    padding: 0;
+    color: white;
+}
+
+.footer_service h5{
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: white;
+    margin-left: 0;
+}
+
+.footer_Apexa h1{
+    padding: 0;
+    color: white;
+}
+
+.footer_Apexa p{
+    margin-top: 0.5rem;
+    padding: 0;
+    line-height: 1.5rem;
+    margin-left: 0;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.button button{
+    margin-left: 0;
+    padding: 1rem 5rem;
+    border-radius: 1em;
+    background: rgb(231, 138, 31);
+}
+}
+
+
+.button button{
+    margin-left: 1.5rem;
+    border: none;
+    padding: 1rem 5rem;
+    border-radius: 1em;
+    background: rgb(231, 138, 31);
+}
+
+.button button:hover{
+    border: orange solid 2px;
+    background: transparent;
+    color: orange;
+    transition: 1s ease;
+}
+
+
+
+
+
+
+
+
+
+

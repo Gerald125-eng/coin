@@ -1,0 +1,124 @@
+<!-- 
+    <li>
+      <h2>{{plan.name}}</h2>
+      <p>{{plan.description}}</p>
+      <p>Min Deposit: ${{plan.minmum_deposit}}</p>
+      <p>Min Deposit: ${{plan.maxmum_deposit}}</p>
+      <p>Max Investment: {{plan.return_rate}}</p>
+      <p>ROI:{{plan.duration}}%</p>
+      <a href="{% url 'plan_detail' plan.pk %}">View Plan</a>
+      <a href="{% url 'dashboard' %}">dashboard</a>
+      <a href="{% url 'make_deposit' plan.pk %}">make_deposit</a>
+    </li>
+
+ 
+
+{% if user.is_authenticated %}
+  <form method="post" action="{% url 'make_deposit' plan.pk %}">
+    {% csrf_token %}
+    <label>Amount:</label>
+    <input type="number" name="amount" step="0.01" required>
+    <p>Select Cryptocurrency:</p>
+    <label><input type="radio" name="crypto_type" value="BTC" required> Bitcoin (BTC)</label><br>
+    <label><input type="radio" name="crypto_type" value="ETH"> Ethereum (ETH)</label>
+
+    <br><br>
+
+    <button type="submit">Invest</button>
+  </form>
+{% else %}
+  <p><a href="{% url 'register' %}">Register</a> or 
+     <a href="{% url 'login' %}">Login</a> to invest.</p>
+{% endif %} -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Package</title>
+    <link rel="stylesheet" href="{% static 'css/deposit.css' %}"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+    <body>
+    <!-- header_dashboard -->
+    <div class="header_dashboard">
+
+        <div>
+          <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+          <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close">
+        </div>
+
+        
+    </div>
+      
+      <div class="promo-container">
+          <h1>{{plan.name}}</h1>
+          <p>Minimum Deposit: ${{plan.minmum_deposit}}</p>
+          <p>Maxmum Deposit: ${{plan.maxmum_deposit}}</p>
+          <p>{{plan.return_rate}}%</p>
+          <p>{{plan.duration}}</p>
+          
+    
+          <form id="promoForm" method="post" action="{% url 'make_deposit' plan.pk %}">
+           {% csrf_token %}
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount" placeholder="Enter amount" required>
+
+            <div class="crypto-options">
+              <input type="radio" id="btc" name="currency" value="BTC">
+              <label for="btc">BTC</label>
+              <input type="radio" id="eth" name="currency" value="ETH">
+              <label for="eth">ETH</label>
+            </div>
+         
+          <button type="submit">Invest</button>
+              <!-- <a href="confirm_payment.html">invest</a> -->
+              <a href="{% url 'dashboard' %}">dashboard</a>
+          </form>
+    
+      </div>
+
+        <div class="buger_2">
+            <div class="img_section_2">
+                <br>
+                <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDREW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            
+                
+            </div>
+      </div>
+
+      <div class="Copyright">
+            <p>Copyright © 2022</p>
+      </div>
+
+
+      <script src="{% static 'js/deposit.js' %}"></script>
+  
+    </body>
+    </html>
+    <section>
+      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.6140305396634!2d-79.876059784515!3d43.25951037913671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c9b820e1bce3b%3A0x90ff9bbfb20fbc8d!2s55%20Bay%20St%20N%2C%20Hamilton%2C%20ON%20L8R%203P7%2C%20Canada!5e0!3m2!1sen!2sng!4v1642740399689!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+  </section>
+   

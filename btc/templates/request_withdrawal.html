@@ -1,0 +1,164 @@
+
+<h2>Request Withdrawal</h2>
+<form method="post">
+  {% csrf_token %}
+  <label>Amount:</label>
+  <input type="number" step="0.01" name="amount" required>
+  <button type="submit">Submit Withdrawal</button>
+</form>
+
+
+<h2>Request Withdrawal</h2>
+
+<form action="{% url 'request_withdrawal' %}" method="post">
+  {% csrf_token %}
+
+  <div>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" step="0.01" placeholder="Enter amount" required>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <button type="submit">Submit Withdrawal</button>
+  </div>
+</form>
+<form method="post" action="{% url 'request_withdrawal' %}">
+    {% csrf_token %}
+    <label for="amount">Withdrawal Amount:</label>
+    <input type="number" step="0.01" name="amount" id="amount" required>
+
+    <p>Select Cryptocurrency:</p>
+    <label><input type="radio" name="crypto_type" value="BTC" required> Bitcoin (BTC)</label><br>
+    <label><input type="radio" name="crypto_type" value="ETH"> Ethereum (ETH)</label>
+
+    <br><br>
+    <button type="submit">Request Withdrawal</button>
+</form>
+
+
+<form method="post" action="{% url 'request_withdrawal' %}">
+    {% csrf_token %}
+    <label for="amount">Withdrawal Amount:</label>
+    <input type="number" step="0.01" name="amount" id="amount" required>
+
+    <p>Select Cryptocurrency:</p>
+    <label><input type="radio" name="crypto_type" value="BTC" required> Bitcoin (BTC)</label><br>
+    <label><input type="radio" name="crypto_type" value="ETH"> Ethereum (ETH)</label>
+
+    <br><br>
+    <button type="submit">Request Withdrawal</button>
+</form>
+
+
+
+
+{% load static %}
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask for Withdrawal</title>
+   <link rel="stylesheet" href="{% static 'css/withdraw.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- header_dashboard -->
+    <div class="header_dashboard">
+        <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+        <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close">
+    </div>
+
+    <div class="container">
+        <h2>Ask for Withdrawal</h2>
+        <p><strong>Account Balance:</strong> $sat0.00</p>
+        <p><strong>Pending Withdrawals:</strong> 0</p><table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Processing</th>
+                <th>Available</th>
+                <th>Pending</th>
+                <th>Account</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><label><input type="radio" name="crypto_type" value="BTC" required> Bitcoin (BTC)</label></td>
+                <td><img src="btc-icon.png" alt="BTC" width="30"></td>
+                <td class="success">$sat0.00</td>
+                <td class="danger">$0.00</td>
+                <td><a href="#" class="link">not set</a></td>
+            </tr>
+            <tr>
+                <td><label><input type="radio" name="crypto_type" value="ETH" required> Ethereum (ETH)</label></td>
+                <td><img src="eth-icon.png" alt="ETH" width="30"></td>
+                <td class="success">$0.00</td>
+                <td class="danger">$0.00</td>
+                <td><a href="#" class="link">not set</a></td>
+            </tr>
+            <tr>
+                <td><label><input type="radio" name="crypto_type" value="ETH"> USDT (ETH)</label></td>
+                <td><img src="usdt-icon.png" alt="USDT" width="30"></td>
+                <td class="success">$0.00</td>
+                <td class="danger">$0.00</td>
+                <td><a href="#" class="link">not set</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <form method="post" action="{% url 'request_withdrawal' %}">
+    {% csrf_token %}
+    <label for="amount">Withdrawal Amount:</label>
+    <input type="number" step="0.01" name="amount" id="amount" required>
+
+    <p>Select Cryptocurrency:</p>
+    <label><input type="radio" name="crypto_type" value="BTC" required> Bitcoin (BTC)</label><br>
+    <label><input type="radio" name="crypto_type" value="ETH"> Ethereum (ETH)</label><br>
+    <label><input type="radio" name="crypto_type" value="ETH"> USDT (ETH)</label>
+
+    <br><br>
+    <button type="submit">Request Withdrawal</button>
+</form>
+
+
+    <div class="buger_2">
+            <div class="img_section_2">
+               <br>
+                <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDREW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            
+                
+            </div>
+      </div>
+
+    <footer>
+        Copyright &copy; All Right Reserved
+    </footer>
+</div>
+
+<script src="{% static 'js/withdraw.js' %}"></script>
+
+</body>
+</html>
