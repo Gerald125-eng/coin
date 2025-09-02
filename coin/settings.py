@@ -14,11 +14,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # -------------------------------------------------------------------
 # Security
 # -------------------------------------------------------------------
-SECRET_KEY = os.getenv("SECRET_KEY", "changeme")  # override in Render
+SECRET_KEY = os.getenv("SECRET_KEY", "changeme")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ["btc.onrender.com", "localhost", "127.0.0.1"]
+# Render sets RENDER_EXTERNAL_HOSTNAME automatically
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+if RENDER_EXTERNAL_HOSTNAME:  # add Render domain dynamically
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 # -------------------------------------------------------------------
 # Applications
 # -------------------------------------------------------------------
