@@ -5,3 +5,142 @@
     {{ password_form.as_p }}
     <button type="submit">Update</button>
 </form>
+
+
+
+<!-- templates/users/update_profile.html -->
+
+<div class="container mt-5">
+  <h2>Update Profile</h2>
+  <hr>
+
+  <!-- Profile Update -->
+  <form method="post" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+    </div>
+    <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
+  </form>
+
+  <hr>
+
+  <!-- Password Update -->
+  <h4>Change Password</h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="old_password" class="form-label">Old Password</label>
+      <input type="password" class="form-control" id="old_password" name="old_password" required>
+    </div>
+    <div class="mb-3">
+      <label for="new_password1" class="form-label">New Password</label>
+      <input type="password" class="form-control" id="new_password1" name="new_password1" required>
+    </div>
+    <div class="mb-3">
+      <label for="new_password2" class="form-label">Confirm New Password</label>
+      <input type="password" class="form-control" id="new_password2" name="new_password2" required>
+    </div>
+    <button type="submit" name="change_password" class="btn btn-warning">Change Password</button>
+  </form>
+</div>
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/account_setting.css' %}">
+</head>
+<body>
+  <!-- header_dashboard -->
+    <div class="header_dashboard">
+        <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+        <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close">
+    </div>
+
+  
+    <div class="account-container_">
+       <div class="account-container">
+        <h2>Your Account</h2>
+        <form id="account-form">
+             {% csrf_token %}
+        <label for="account-name">Account Name:</label>
+        <input type="text" id="account-name" name="account-name" value="{{ user.username }}" disabled>
+
+        <label for="registration-date">Registration Date:</label>
+        <input type="text" id="registration-date" name="registration-date" value="Sep-6-2023 09:35:12 AM" disabled>
+
+        <label for="full-name">old_password:</label>
+        <input type="text" id="full-name" name="old_password" value="" required>
+
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password" placeholder="Enter new password" value="" required>
+
+        <label for="retype-password">Retype Password:</label>
+        <input type="password" id="retype-password" name="retype-password" placeholder="Retype new password" required>
+
+        <label for="btc-address">Your BTC Address:</label>
+        <input type="text" id="btc-address" name="btc-address" placeholder="Enter BTC address">
+
+        <label for="email">Your Email Address:</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}">
+
+        <button type="submit" name="change_password" class="btn btn-warning">Change Account Data</button>
+        </form>
+    </div>
+    </div>
+
+
+     <div class="buger_2">
+            <div class="img_section_2">
+              <br>
+                <img src="{% static 'Img/dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDREW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            
+                
+            </div>
+      </div>
+      
+      <div class="Copyright">
+            <p>Copyright © 2022</p>
+        </div>
+    
+  <script src="{% static 'js/account_setting.js' %}"></script>
+</body>
+</html>
+
+
+

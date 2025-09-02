@@ -133,17 +133,13 @@ def index(request):
 
 
 def about_us(request):
-    plans = SubscriptionPlan.objects.all()
-    return render(request, "about_us.html", {"plans": plans})
-
+    return render(request, "about_us.html",)
 
 
 
 def plan_detail(request, pk):
     plan = get_object_or_404(SubscriptionPlan, pk=pk)
     return render(request, "plan_detail.html", {"plan": plan})
-
-
 
 
 
@@ -322,13 +318,6 @@ def confirm_deposit(request,):
 @login_required
 def update_profile(request):
     user = request.user
-    # Add your profile update logic here
-    return render(request, 'update_profile.html', {'user': user})
-
-
-@login_required
-def update_profile(request):
-    user = request.user
 
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=user)
@@ -362,3 +351,7 @@ def update_profile(request):
 def referral_list(request):
     referrals = Referral.objects.select_related("referrer").all().order_by("-created_at")
     return render(request, "referrals.html", {"referrals": referrals})
+
+
+def account_security(request):
+    return render(request, 'account_security.html')

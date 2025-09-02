@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Login Security Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/account_security.css' %}">
+</head>
+<body>
+    <!-- header_dashboard -->
+    <div class="header_dashboard">
+        <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+        <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close">
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <header>
+                <h1>Advanced Login Security Settings</h1>
+            </header>
+            <form action="#" method="post">
+                <!-- Detect IP Address Change Sensitivity -->
+                <section>
+                    <h2>Detect IP Address Change Sensitivity</h2>
+                    <label>
+                        <input type="radio" name="ip_sensitivity" value="disabled" checked> Disabled
+                    </label>
+                    <label>
+                        <input type="radio" name="ip_sensitivity" value="medium"> Medium
+                    </label>
+                    <label>
+                        <input type="radio" name="ip_sensitivity" value="high"> High
+                    </label>
+                    <label>
+                        <input type="radio" name="ip_sensitivity" value="paranoid"> Paranoid
+                    </label>
+                </section>
+
+                <!-- Detect Browser Change -->
+                <section>
+                    <h2>Detect Browser Change</h2>
+                    <label>
+                        <input type="radio" name="browser_change" value="disabled" checked> Disabled
+                    </label>
+                    <label>
+                        <input type="radio" name="browser_change" value="enabled"> Enabled
+                    </label>
+                </section>
+
+                <button type="submit">Set</button>
+            </form>
+
+            <!-- Two Factor Authentication -->
+            <section class="two-factor-auth">
+                <h2>Two Factor Authentication</h2>
+                <ol>
+                    <li>Install <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank">Google Authenticator</a> on your mobile device.</li>
+                    <li>Your Secret Code is: <span class="secret-code">VH4AJGEIE3DDQJ57</span></li>
+                    <li>
+                        Please enter the two-factor token from Google Authenticator to verify correct setup:
+                        <input type="text" placeholder="Enter token">
+                        <button type="submit">Enable</button>
+                    </li>
+                </ol>
+            </section>
+
+            
+        
+        </div>
+    </div>
+
+      <div class="buger_2">
+            <div class="img_section_2">
+                <br>
+                <img src="{% static 'Img/dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDREW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            
+                
+            </div>
+      </div>
+
+        <div class="Copyright">
+            <p>Copyright © 2022</p>
+        </div>
+
+        <script src="{% static 'js/account_security.js' %}"></script>
+</body>
+</html>
