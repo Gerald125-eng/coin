@@ -1,0 +1,307 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.body_container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+}
+
+.header_dashboard{
+    width: 100%;
+    height: 100px;
+      background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.6));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.header_dashboard img{
+   width: 2rem;
+}
+
+
+
+/* buger */
+.buger{
+     background: #615e5e;
+  display: flex;
+  padding: 1rem;
+  height: fit-content;
+  justify-content: center;
+  width: 20%;
+}
+
+
+.img_section a{
+    text-decoration: none;
+   font-size: 16px;
+   color: #000;
+   /* padding: 0.5rem; */
+}
+
+.img_section img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    flex: content;
+    text-align: center;
+}
+.img_section h3{
+    /* padding: 0.5rem; */
+}
+
+
+/* buger_2 */
+.buger_2{
+    position: absolute;
+    top: 6.2rem;
+    left: 0;
+  display: none;
+  background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.6));
+  justify-content: center;
+  width:20%;
+  height: 500px;
+  
+ 
+}
+
+
+.removebg_close{
+    display: none;
+}
+
+.img_section_2 p a{
+  color: white;
+}
+
+
+.icons8-close{
+        display: none;
+    }
+
+.img_section_2 a{
+    text-decoration: none;
+   font-size: 16px;
+   padding: 0.5rem;
+   color: #000;
+}
+
+.img_section_2 img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex: content;
+    text-align: center;
+}
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .buger_2{
+        display: none;
+        position: absolute;
+    top: 6.2rem;
+    left: 0;
+  display: none;
+  background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.6));
+  justify-content: center;
+  width:100%;
+  height: 100vh;
+    }
+    .icons8-close{
+        display: none;
+    }
+    .img_section{
+        display: none;
+    }
+    .OIP-removebg{
+    display: none;
+    }
+    .removebg_close{
+    display: block;
+    }
+
+    .close{
+        display: none;
+    }
+}
+
+
+
+
+.account{
+    width: 80%;
+    height: fit-content;
+    /* flex: 2; */
+    text-align: center;
+    padding: 1rem;
+     background: #615e5e;
+}
+
+.plans{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+.plans a{
+    padding: 8px 30px;
+    background:blue;
+    font-size: 10px;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.plans a:hover{
+    background: white;
+    border: blue 1px solid;
+    color: blue;
+    transition: 1s ease;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 50vh;
+     background: #615e5e;
+}
+
+.container{
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    /* background: #000; */
+    /* padding: 15px 15px; */
+    gap: 30px;
+}
+
+.total{
+    width: 100%;
+    flex-wrap: wrap;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.total div{
+    width: 250px;
+    height: 80px;
+    border-radius: 1rem;
+    background:white;
+    border: solid 1px black;
+}
+
+
+.profile div img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.profile div h3{
+  flex: content;
+  text-align: center;
+}
+.profile div p{
+  flex: content;
+  text-align: center;
+}
+
+.total p{
+    margin-top: 10px;
+}
+
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+     .body_container{
+        /* display: none; */
+    }
+
+    .buger{
+        display: none;
+    }
+
+    .img_section{
+        display: none;
+    }
+    .profile{
+        height: fit-content;
+        padding: 1rem;
+    }
+    
+    .container .profile{
+        width: 60%;
+    }
+    .container .profile div h3{
+      margin-left: 20px;
+    }
+
+    
+    .plans{
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+
+    .account .total div{
+        width: 120px;
+        height: 80px;
+        background:white;
+    }
+
+    .total{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .total h4{
+        font-size: 13px;
+    }
+
+    .container .account .plans div{
+    
+        background:rgb(130, 130, 138);
+        font-size: 10px;
+        color: aliceblue;
+    }
+    .container{
+        flex-wrap: wrap;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .account{
+        width: 100%;
+        height: fit-content;
+        padding: 2rem;
+    }
+
+    
+}
+
+.Copyright{
+    padding: 1rem;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.6));
+
+}
+.Copyright p{
+    font-size: 1rem;
+    color: white;
+}

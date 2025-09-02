@@ -1,0 +1,382 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    background:rgb(146, 158, 197);
+    position: fixed;
+    z-index: 99999;
+    padding: 2rem;
+    /* border-bottom: #0facd3 solid 2px; */
+}
+.logo img{
+    width: 8rem;
+    margin-left: 14rem;
+}
+.menu img{
+    width: 1rem;
+}
+nav{
+    display: flex;
+    gap: 3rem;
+}
+
+nav a{
+   text-decoration: none;
+   font-size: large;
+   color: white;
+}
+
+nav a:hover{
+  color: rgb(47, 115, 240);
+  transition: 1s ease;
+}
+
+.nav_second{
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    top: 6.2rem;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.85));
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    /* text-align: center; */
+    position: absolute;
+    position: fixed;
+    color: #000;
+    z-index: 999999999;
+    display: none;
+}
+
+.icons8-close{
+        display: none;
+    }
+@media (min-width : 320px) and  (max-width: 1024px){
+    nav{
+        display: none;
+    }
+    .logo img{
+    width: 6rem;
+    margin-left: 0;
+   }
+   .header{
+    top: -0.2rem;
+    padding: 0.5rem;
+    height: 80px;
+   }
+   .nav_second{
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 4.5rem;
+    z-index: 99999;
+    display: none;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.85));
+   }
+}
+
+
+
+
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #f9f9f9;
+}
+
+
+
+/* Header */
+header {
+    text-align: center;
+    background: linear-gradient(45deg, #0dedfd, #6c63ff);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+header{
+    padding: 1rem;
+    /* margin-left: 15rem; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+/* 
+
+
+
+
+/* Contact Container */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+/* Contact Info */
+.contact-info {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Contact Form */
+.contact-form {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.Message{
+    display: flex;
+    gap: 2rem;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.message_button a {
+    margin-top: 2rem;
+    text-decoration: none;
+    background: #0dfdfd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+
+.content_container{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+
+
+.container {
+    
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+
+.content{
+    padding: 1rem;
+    /* margin-left: 15rem; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #09e3e3;
+    background: linear-gradient(90deg, #4a3546, #0facd3, #ab9db0, #0841d1, #454b4b);
+    background-size: 500%;
+    z-index: 1;
+    animation: blink 11s linear infinite alternate;
+}
+@keyframes blink{
+    from{
+    background-position: 0%;
+    }
+    to{
+    background-position: 500%;
+    }
+}
+
+
+
+.contact-details{
+  margin-top: 5rem;
+    
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Reach{
+color: white;
+}
+.contact-form button:hover {
+    background-color: #b9bfc6;
+    color: #000;
+}
+
+.contact-details img{
+    width: 450px;
+    height: 650px;
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .content{
+        flex-direction: column;
+        height: fit-content;
+    }
+    .contact-details img{
+        width: 300px;
+        height: 600px;
+    }
+}
+
+
+
+
+
+
+/* footer_div */
+
+
+.footer{
+    padding: 6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    background: #223858;
+    gap: 2rem;
+}
+
+.footer_img img{
+    width: 8rem;
+}
+
+.footer_text p{
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.contact_area{
+    padding: 2rem;
+    color: white;
+}
+.office h1{
+    color: rgb(22, 112, 231);
+    font-size: 1.5rem;
+}
+
+.office p{
+    color: white;
+    line-height: 1.5rem;
+}
+
+.footer_service h1{
+    padding: 2rem;
+    color: white;
+}
+
+.footer_service h5{
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: white;
+    margin-left: 1.5rem;
+}
+
+.footer_Apexa h1{
+    padding: 1.9rem;
+    color: white;
+}
+
+.footer_Apexa p{
+    padding: 0.5rem;
+    line-height: 1.5rem;
+    margin-left: 1.5rem;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.button button{
+    margin-left: 1.5rem;
+    border: none;
+    padding: 1rem 5rem;
+    border-radius: 1em;
+    background: rgb(231, 138, 31);
+}
+
+.button button:hover{
+    border: orange solid 2px;
+    background: transparent;
+    color: orange;
+    transition: 1s ease;
+}
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .footer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .footer_service h1{
+       font-size: 20px;
+    }
+    .footer_Apexa h1{
+       font-size: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+

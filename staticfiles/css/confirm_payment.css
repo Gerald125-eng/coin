@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0047ab;
+    }
+
+    .table-container {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0047ab;
+      color: #fff;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #003380;
+    }
+
+    #confirmationMessage {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+   
+@media (min-width : 320px) and  (max-width: 1024px){
+    .table-container th{
+        font-size: 13px;
+    }
+    .container h1{
+        font-size: 18px;
+    }
+}
+
+
+.invet_{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.header_dashboard{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.6));
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+.header_dashboard img{
+   width: 2rem;
+}
+
+.buger_2{
+        display: none;
+    }
+    .icons8-close{
+        display: none;
+    }
+
+
+
+@media (min-width : 320px) and  (max-width: 1024px){
+    .buger_2{
+        display: none;
+    }
+    .icons8-close{
+        display: none;
+    }
+}
+
+
+/* buger_2 */
+.buger_2{
+    position: absolute;
+    top: 6.2rem;
+    left: 0;
+  display: none;
+  background: linear-gradient( rgba(0,30,90,0.95) ,rgba(0,30,90,0.6));
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.img_section_2 p a{
+  color: white;
+}
+
+
+.img_section_2 a{
+  text-decoration: none;
+  color: #000;
+}
+
+.img_section_2 img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex: content;
+    text-align: center;
+}
+
+
+.Copyright{
+    padding: 1rem;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    background: #535353;
+}
+.Copyright p{
+    font-size: 1rem;
+    color: white;
+}
