@@ -32,11 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'btc',   # your crypto app
 
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
