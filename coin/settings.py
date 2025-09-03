@@ -176,5 +176,5 @@ ADMIN_NOTIFY_EMAIL = env("ADMIN_NOTIFY_EMAIL", default=EMAIL_HOST_USER)
 
 
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]  # if you have a "static" folder in your project
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [BASE_DIR / "static"]  # if you have a "static" folder in your project
