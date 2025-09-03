@@ -25,26 +25,11 @@ DEBUG = True
 # Render sets RENDER_EXTERNAL_HOSTNAME automatically
 
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "btc-vmsv.onrender.com",  # your Render domain
-]
+ALLOWED_HOSTS = ["*"]
 
-# Add Render’s dynamic hostname if available
-RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-# CSRF trusted origins
 CSRF_TRUSTED_ORIGINS = [
-    "https://btc-vmsv.onrender.com",
+    f"https://{host}" for host in ALLOWED_HOSTS if host not in ["localhost", "127.0.0.1"]
 ]
-
-# If you expect Render to give you a custom hostname, add it too
-if RENDER_EXTERNAL_HOSTNAME:
-    CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_EXTERNAL_HOSTNAME}")
-# Applications
 # -------------------------------------------------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
