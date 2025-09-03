@@ -1,0 +1,163 @@
+/* styles.css - clean, modern table for deposit & withdraw history */
+
+* { box-sizing: border-box; }
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #5eead4;
+  --accent-2: #60a5fa;
+  --success: #10b981;
+  --failed: #ef4444;
+  --pending: #f59e0b;
+  --text: #e6eef6;
+  --radius: 12px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, #041025 0%, #071428 60%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card {
+  background: linear-gradient(180deg, var(--card), rgba(11,18,32,0.7));
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.legend {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+}
+.dot.deposit { background: var(--accent); }
+.dot.withdraw { background: var(--accent-2); }
+
+.summary { color: var(--muted); font-size: 13px; }
+
+.table-wrapper {
+  overflow: auto;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+table.history {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  font-size: 14px;
+}
+.history caption {
+  text-align: left;
+  padding-bottom: 8px;
+  color: var(--muted);
+}
+.history thead th {
+  text-align: left;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 12px 14px;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(11,18,32,0.85);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.history tbody td {
+  padding: 14px;
+  border-bottom: 1px dashed rgba(255,255,255,0.02);
+}
+
+.history tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.01);
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+}
+.pill.deposit { background: var(--accent); color: #021220; }
+.pill.withdraw { background: var(--accent-2); color: #021220; }
+
+.status {
+  display: inline-block;
+  padding: 6px 9px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status.success { background: rgba(16,185,129,0.12); color: var(--success); }
+.status.failed { background: rgba(239,68,68,0.08); color: var(--failed); }
+.status.pending { background: rgba(245,158,11,0.07); color: var(--pending); }
+
+@media (max-width:720px) {
+  .container { padding: 12px; }
+  table.history { min-width: 100%; }
+  .history thead { display: none; }
+  .history tbody td {
+    display: block;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .history tbody td[data-label]::before {
+    content: attr(data-label) ": ";
+    float: left;
+    font-weight: 700;
+    color: var(--muted);
+    width: 110px;
+  }
+}
+
+.card-footer {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: right;
+}

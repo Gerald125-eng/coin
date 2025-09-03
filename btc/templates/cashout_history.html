@@ -1,0 +1,98 @@
+{% load static %}
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask for Withdrawal</title>
+    <link rel="stylesheet" href="{% static 'css/withdraw.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- header_dashboard -->
+    <div class="header_dashboard">
+        <img src="{% static 'Img/OIP-removebg-preview (1).png' %}" alt="" class="OIP-removebg">
+        <img src="{% static 'Img/icons8-close-50.png' %}" alt="" class="icons8-close">
+    </div>
+
+    <div class="container">
+        <h2>Deposit & Withdrawal History</h2>
+
+        <!-- Deposit & Withdrawal History Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Transaction ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in deposits %}
+                <tr>
+                    <td>{{ d.plan.name }}</td>
+                    <td>{{ d.created_at }}</td>
+                    <td>${{ d.amount }}</td>
+                    <td>{{ d.status }}</td>
+                    <td>{{ d.transaction_hash }}</td>
+                    {% empty %}
+                    <tr><td colspan="5">No deposits yet.</td></tr>
+                {% endfor %}
+                </tr>
+
+                {% for w in withdrawals %}
+                <tr>
+                    <td>{{ d.plan.name }}</td>
+                    <td>{{ w.created_at }}</td>
+                    <td>${{ d.amount }}</td>
+                    <td>{{ d.status }}</td>
+                    <td>{{ d.transaction_hash }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3">No withdrawals yet.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        
+
+        <div class="buger_2">
+            <div class="img_section_2">
+               <br>
+                <img src="{% static 'Img/dt-avatar.png' %}" alt="">
+                <br>
+                <h3>Jorge</h3>
+                <br>
+                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <br>
+                <p><a href="deposit.html">INVEST</a></p>
+                <br>
+                <p><a href="withdraw.html">WITHDRAW</a></p>
+                <br>
+                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <br>
+                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <br>
+                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <br>
+                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <br>
+                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <br>
+                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+            </div>
+        </div>
+
+        <footer>
+            Copyright &copy; All Right Reserved
+        </footer>
+    </div>
+
+    <script src="{% static 'js/withdraw.js' %}"></script>
+
+</body>
+</html>

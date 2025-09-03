@@ -184,25 +184,25 @@
                 <br>
                 <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
                 <br>
-                <h3>Jorge</h3>
+                <h3>{{ user.username }}</h3>
                 <br>
-                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
                 <br>
-                <p><a href="deposit.html">INVEST</a></p>
+                <p><a href="{% url 'deposit' %}">INVEST</a></p>
                 <br>
-                <p><a href="withdraw.html">WITHDREW</a></p>
+                <p><a href="{% url 'request_withdrawal' %}">WITHDREW</a></p>
                 <br>
-                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <p><a href="{% url 'cashout_history' %}">CASHOUT HISTORY</a></p>
                 <br>
-                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <p><a href="{% url 'my_referal' %}">MY REFERRAL</a></p>
                 <br>
-                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <p><a href="{% url 'my_referal' %}">REF.CASHOUT</a></p>
                 <br>
-                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <p><a href="{% url 'update_profile' %}">ACCOUNT SETTINGS</a></p>
                 <br>
-                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <p><a href="{% url 'account_security' %}">ACCOUNT SECURITY</a></p>
                 <br>
-                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+                <p><a href="{% url 'logout' %}">SIGN OUT</a></p>
             
                 
             </div>
@@ -262,7 +262,7 @@
 
                     <div class="meta">
                         <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
-                        <h3>Jorge</h3>
+                        <h3>{{ user.username }}</h3>
                         <div class="oooo">
                             <p>Account Status</p>
                         </div>
@@ -276,25 +276,25 @@
                 <br>
                 <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
                 <br>
-                <h3>Jorge</h3>
+                <h3>{{ user.username }}</h3>
                 <br>
-                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
                 <br>
-                <p><a href="deposit.html">INVEST</a></p>
+                <p><a href="{% url 'deposit' %}">INVEST</a></p>
                 <br>
-                <p><a href="withdraw.html">WITHDREW</a></p>
+                <p><a href="{% url 'request_withdrawal' %}">WITHDREW</a></p>
                 <br>
-                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <p><a href="{% url 'cashout_history' %}">CASHOUT HISTORY</a></p>
                 <br>
-                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <p><a href="{% url 'my_referal' %}">MY REFERRAL</a></p>
                 <br>
-                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <p><a href="{% url 'my_referal' %}">REF.CASHOUT</a></p>
                 <br>
-                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <p><a href="{% url 'update_profile' %}">ACCOUNT SETTINGS</a></p>
                 <br>
-                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <p><a href="{% url 'account_security' %}">ACCOUNT SECURITY</a></p>
                 <br>
-                <p><a href="Sign_Out.html">SIGN OUT</a></p>
+                <p><a href="{% url 'logout' %}">SIGN OUT</a></p>
             
                 
             </div>
@@ -302,6 +302,8 @@
 
         
    </div>
+
+
 
    <div class="Copyright">
     <p>Copyright © 2022</p>

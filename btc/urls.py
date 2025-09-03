@@ -6,7 +6,10 @@ from . import views
 
 urlpatterns = [
       path("", views.index, name="index"),
+      path("dashboard/", views.dashboard_view, name="dashboard"),
     path('contact/', views.contact_view, name='contact'),
+    path('help/', views.help_view, name='help'),
+    path('cashout_history/', views.cashout_view, name='cashout_history'),
     path('account_security/', views.account_security, name='account_security'),
     path('about_us/', views.about_us, name='about_us'),
     path('register/', views.register_view, name='register'),
@@ -15,7 +18,6 @@ urlpatterns = [
     path("confirm_deposit/confirm_deposit/", views.confirm_deposit, name="confirm_deposit"),
     path("plan/<int:pk>/", views.plan_detail, name="plan_detail"),
     path("plan/<int:pk>/deposit/", views.make_deposit, name="make_deposit"),
-    path("dashboard/", views.dashboard, name="dashboard"),
     path("my_referal/", views.my_referal, name="my_referal"),
     path('update-profile/', views.update_profile, name='update_profile'),
     path('request-withdrawal/', views.request_withdrawal, name='request_withdrawal')

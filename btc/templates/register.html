@@ -45,12 +45,12 @@
        </div>
 
        <nav>
-         <a href="index.html">Home</a>
-         <a href="about_us.html">About</a>
-         <a href="Sign_In.html">Login</a>
-         <a href="Sign_Up.html">Signup</a>
-         <a href="help.html">Help</a>
-         <a href="contact.html">Contact us</a>
+         <a href="{% url 'index' %}">Home</a>
+         <a href="{% url 'about_us' %}">About</a>
+         <a href="{% url 'login' %}">Login</a>
+         <a href="{% url 'register' %}">Signup</a>
+         <a href="{% url 'help' %}">Help</a>
+         <a href="{% url 'contact' %}">Contact us</a>
        </nav>
 
        <div class="menu">
@@ -61,12 +61,12 @@
   </div>
 
   <nav class="nav_second">
-         <a href="index.html">Home</a>
-         <a href="about_us.html">About</a>
-         <a href="Sign_In.html">Login</a>
-         <a href="Sign_Up.html">Signup</a>
-         <a href="help.html">Help</a>
-         <a href="contact.html">Contact us</a>
+         <a href="{% url 'index' %}">Home</a>
+         <a href="{% url 'about_us' %}">About</a>
+         <a href="{% url 'login' %}">Login</a>
+         <a href="{% url 'register' %}">Signup</a>
+         <a href="{% url 'help' %}">Help</a>
+         <a href="{% url 'contact' %}">Contact us</a>
   </nav> 
 
     <div class="container">
@@ -181,6 +181,7 @@
 
         </div>
   </div>
+
 
     <script src="{% static 'js/sign_up.js' %}"></script>
 </body>

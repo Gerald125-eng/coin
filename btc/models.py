@@ -16,7 +16,7 @@ class Profile(models.Model):
             self.referral_code = str(uuid.uuid4()).replace('-', '')[:10]  # unique 10-char code
         super(Profile, self).save(*args, **kwargs)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.user.username}'s profile"
 
     def referral_link(self):
