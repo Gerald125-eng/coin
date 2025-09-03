@@ -25,7 +25,7 @@ DEBUG = True
 # Render sets RENDER_EXTERNAL_HOSTNAME automatically
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["btc-vmsv.onrender.com", "localhost", "127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = [
     f"https://{host}" for host in ALLOWED_HOSTS if host not in ["localhost", "127.0.0.1"]
@@ -155,7 +155,7 @@ LOGGING = {
 
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = ["btc-vmsv.onrender.com", "localhost", "127.0.0.1"]
 
 
 
