@@ -1,16 +1,4 @@
-<p>Please send your deposit to our company wallet address:</p>
-<p><strong>Wallet Address:</strong> 0x1234567890ABCDEF1234567890ABCDEF12345678</p>
 
-<form method="post">
-  {% csrf_token %}
-  <!-- <label>Amount (USD):</label>
-  <input type="number" name="amount" step="0.01" required><br><br> -->
-
-  <label>Transaction Hash:</label>
-  <input type="text" name="transaction_hash" required><br><br>
-
-  <button type="submit">Submit Deposit</button>
-</form>
 
 
 {% load static %}
@@ -100,26 +88,25 @@
                 <br>
                 <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
                 <br>
-                <h3>Jorge</h3>
+                <h3>{{ user.username }}</h3>
                 <br>
-                <p><a href="dashboard.html">DASHBOARD</a></p>
+                <p><a href="{% url 'index' %}">INDEX</a></p>
                 <br>
-                <p><a href="deposit.html">INVEST</a></p>
+                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
                 <br>
-                <p><a href="withdraw.html">WITHDREW</a></p>
+                <p><a href="{% url 'request_withdrawal' %}">WITHDREW</a></p>
                 <br>
-                <p><a href="ref_cashout.html">CASHOUT HISTORY</a></p>
+                <p><a href="{% url 'cashout_history' %}">CASHOUT HISTORY</a></p>
                 <br>
-                <p><a href="my_refferal.html">MY REFERRAL</a></p>
+                <p><a href="{% url 'my_referal' %}">MY REFERRAL</a></p>
                 <br>
-                <p><a href="ref_cashout.html">REF.CASHOUT</a></p>
+                <p><a href="{% url 'my_referal' %}">REF.CASHOUT</a></p>
                 <br>
-                <p><a href="account_setting.html">ACCOUNT SETTINGS</a></p>
+                <p><a href="{% url 'update_profile' %}">ACCOUNT SETTINGS</a></p>
                 <br>
-                <p><a href="account_security.html">ACCOUNT SECURITY</a></p>
+                <p><a href="{% url 'account_security' %}">ACCOUNT SECURITY</a></p>
                 <br>
-                <p><a href="Sign_Out.html">SIGN OUT</a></p>
-            
+                <p><a href="{% url 'logout' %}">SIGN OUT</a></p>
                 
             </div>
       </div>

@@ -1,4 +1,4 @@
-<h1>Welcome, {{ user.username }}</h1>
+<!-- <h1>Welcome, {{ user.username }}</h1>
 
 <div class="dashboard-stats">
   <p><strong>Total Deposit:</strong> ${{total_deposit}}</p>
@@ -15,7 +15,7 @@
 <h2>Welcome {{ user.username }}</h2>
 
 <h3>Your Referral Link</h3>
-<p><input type="text" value="{{ user.referral_link }}" readonly></p>
+<p><input type="text" value="{{ referral_link }}" readonly></p>
 
 <h3>Your Referrals</h3>
 <ul>
@@ -48,7 +48,7 @@
             <td>{{ d.plan.name }}</td>
             <td>${{ d.amount }}</td>
             <td>{{ d.status }}</td>
-            <td>{{ d.transaction_hash }}</td>
+            
             <td>{{ d.created_at }}</td>
         </tr>
     {% empty %}
@@ -146,7 +146,7 @@
 
     <a href="{% url 'logout' %}">Logout</a>
 </body>
-</html>
+</html> -->
 
 
 {% load static %}
@@ -181,14 +181,14 @@
 
         <div class="buger">
             <div class="img_section">
-                <br>
+                 <br>
                 <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
                 <br>
                 <h3>{{ user.username }}</h3>
                 <br>
-                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
+                <p><a href="{% url 'index' %}">INDEX</a></p>
                 <br>
-                <p><a href="{% url 'deposit' %}">INVEST</a></p>
+                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
                 <br>
                 <p><a href="{% url 'request_withdrawal' %}">WITHDREW</a></p>
                 <br>
@@ -212,14 +212,14 @@
                 <div class="account">
                     <h2>Account Balance</h2>
                     <h1>USD   ${{ balance }}</h1>
-            
-                    <div class="plans">
-                        <a href="deposit.html">Brozen</a>
-                        <a href="deposit.html">SlIver</a>
-                        <a href="deposit.html">Golden</a>
-                        <a href="deposit.html">Promo</a>
+              {% for plan in plans %}
+                <div class="plans">
+                        <a href="{% url 'make_deposit' plan.pk %}">Invest Now</a>
+                        
                         
                     </div>
+              {% endfor %}
+                    
                     <br>
                     <div class="total">
                         <div>
@@ -273,14 +273,14 @@
 
         <div class="buger_2">
             <div class="img_section_2">
-                <br>
+                 <br>
                 <img src="{% static 'Img/./dt-avatar.png' %}" alt="">
                 <br>
                 <h3>{{ user.username }}</h3>
                 <br>
-                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
+                <p><a href="{% url 'index' %}">INDEX</a></p>
                 <br>
-                <p><a href="{% url 'deposit' %}">INVEST</a></p>
+                <p><a href="{% url 'dashboard' %}">DASHBOARD</a></p>
                 <br>
                 <p><a href="{% url 'request_withdrawal' %}">WITHDREW</a></p>
                 <br>

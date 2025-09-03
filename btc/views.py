@@ -150,7 +150,7 @@ def plan_detail(request, pk):
     return render(request, "plan_detail.html", {"plan": plan})
 
 
-
+@login_required
 def make_deposit(request, pk):
     plan = get_object_or_404(SubscriptionPlan, pk=pk)
 
@@ -175,20 +175,19 @@ def make_deposit(request, pk):
             status="pending",
         )
 
-        # Email user
+
         send_mail(
             "Deposit Submitted",
             f"Dear {request.user.username}, you submitted a deposit of ${amount} into {plan.name}. Pending admin approval.",
-            settings.DEFAULT_FROM_EMAIL,
+            settings.DEFAULT_FROM_EMAIL,  # 👈 what the user sees
             [request.user.email],
             fail_silently=False,
         )
 
-        # Email admin
         send_mail(
             "New Deposit Request",
             f"{request.user.username} requested a deposit of ${amount} into {plan.name}.",
-            settings.DEFAULT_FROM_EMAIL,
+            settings.DEFAULT_FROM_EMAIL,  # 👈 what admin sees
             [settings.ADMIN_NOTIFY_EMAIL],
             fail_silently=False,
         )
@@ -236,89 +235,46 @@ def request_withdrawal(request):
 
 from django.db.models import Sum
 
-# def dashboard_view(request):
-#     user = request.user
-#     profile, created = Profile.objects.get_or_create(user=user)
-#     referrals = user.referrals.all()  # users referred by this user
-#     referral_link = request.build_absolute_uri(f"/register/?ref={user.profile.referral_code}")
-
-#     # Only approved deposits and withdrawals
-#     deposits = Deposit.objects.filter(user=user, status="approved")
-#     withdrawals = Withdrawal.objects.filter(user=user, status="approved")  # Assuming you have status field
-
-#     total_deposit = deposits.aggregate(Sum("amount"))["amount__sum"] or 0
-#     total_withdrawal = withdrawals.aggregate(Sum("amount"))["amount__sum"] or 0
-#     last_deposit = deposits.order_by("-date").first()
-#     last_withdrawal = withdrawals.order_by("-created_at").first()
-#     balance = total_deposit - total_withdrawal
-
-#     # Also pass all deposits (approved + pending) if you want to show pending deposits separately
-#     all_deposits = Deposit.objects.filter(user=user)
-
-#     context = {
-#         'user': user,
-#         'profile': profile,
-#         "total_deposit": total_deposit,
-#         "total_withdrawal": total_withdrawal,
-#         "last_deposit": last_deposit,
-#         "last_withdrawal": last_withdrawal,
-#         "balance": balance,
-#         "deposits": all_deposits,  # includes pending
-#         "withdrawals": withdrawals,
-#         'referrals': referrals, 
-#         'referral_link': referral_link
-#     }
-#     return render(request, "dashboard.html", context)
-
-# @login_required
-# def dashboard_view(request):
-#     # Get user profile
-#     try:
-#         profile = request.user.profile
-#     except Profile.DoesNotExist:
-#         # If the profile does not exist, create one
-#         profile = Profile.objects.create(user=request.user)
-
-#     # Fetch deposits and withdrawals
-#     deposits = Deposit.objects.filter(user=request.user)
-#     withdrawals = Withdrawal.objects.filter(user=request.user)
-
-#     # Totals
-#     total_deposit = sum(d.amount for d in deposits)
-#     total_withdrawal = sum(w.amount for w in withdrawals)
-
-#     # Last deposit/withdrawal
-#     last_deposit = deposits.last()
-#     last_withdrawal = withdrawals.last()
-
-#     # Referrals
-#     referrals = Referral.objects.filter(user=request.user).select_related('referred_user')
-
-#     context = {
-#         "user": request.user,
-#         "profile": profile,
-#         "referral_link": profile.referral_link(),
-#         "deposits": deposits,
-#         "withdrawals": withdrawals,
-#         "total_deposit": total_deposit,
-#         "total_withdrawal": total_withdrawal,
-#         "balance": profile.balance,
-#         "last_deposit": last_deposit,
-#         "last_withdrawal": last_withdrawal,
-#         "referrals": [r.referred_user for r in referrals],
-#     }
-
-#     return render(request, "dashboard.html", context)
-
-
-
-@login_required
 def dashboard_view(request):
-    # Temporary debug: just pass user
+    plans = SubscriptionPlan.objects.all()
+    user = request.user
+    profile, created = Profile.objects.get_or_create(user=user)
+    referrals = user.referrals.all()  # users referred by this user
+    referral_link = request.build_absolute_uri(f"/register/?ref={user.profile.referral_code}")
+
+    # Only approved deposits and withdrawals
+    deposits = Deposit.objects.filter(user=user, status="approved")
+    withdrawals = Withdrawal.objects.filter(user=user, status="approved")  # Assuming you have status field
+
+    total_deposit = deposits.aggregate(Sum("amount"))["amount__sum"] or 0
+    total_withdrawal = withdrawals.aggregate(Sum("amount"))["amount__sum"] or 0
+    last_deposit = deposits.order_by("-date").first()
+    last_withdrawal = withdrawals.order_by("-created_at").first()
+    balance = total_deposit - total_withdrawal
+
+    # Also pass all deposits (approved + pending) if you want to show pending deposits separately
+    all_deposits = Deposit.objects.filter(user=user)
+
+   
     context = {
-        "user": request.user
-    }
+    "plans": plans,
+    "user": request.user,
+    "profile": profile,
+    "referral_link": profile.referral_link(),  # ✅ this is what template should use
+    "deposits": deposits,
+    "withdrawals": withdrawals,
+    "total_deposit": total_deposit,
+    "total_withdrawal": total_withdrawal,
+    "balance": profile.balance,
+    "last_deposit": last_deposit,
+    "last_withdrawal": last_withdrawal,
+    "referrals": referrals,
+}
     return render(request, "dashboard.html", context)
+
+
+
+
 
 def my_referal(request):
     user = request.user
@@ -327,8 +283,10 @@ def my_referal(request):
     referral_link = request.build_absolute_uri(f"/register/?ref={user.profile.referral_code}")
 
     context = {
-        'referrals': referrals, 
-        'referral_link': referral_link
+        "referral_link": profile.referral_link(), 
+        "user": request.user,
+    "profile": profile,
+       
     }
     return render(request, "my_referal.html", context)
 
@@ -347,10 +305,12 @@ def confirm_deposit(request,):
                 "Deposit Submitted",
                 f"Dear {request.user.username}, you submitted a deposit of ${amount} into {SubscriptionPlan.name}.\n"
                 f"Transaction Hash: {tx_hash}\nPending admin approval.",
-                settings.DEFAULT_FROM_EMAIL,
+                settings.EMAIL_HOST_USER,
                 [request.user.email],
                 fail_silently=True,
             )
+        
+       
 
             # Notify admin
             # send_mail(
