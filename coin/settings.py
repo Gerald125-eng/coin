@@ -28,16 +28,22 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "btc-vmsv.onrender.com",
+    "btc-vmsv.onrender.com",  # your Render domain
 ]
 
+# Add Render’s dynamic hostname if available
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-    CSRF_TRUSTED_ORIGINS = ["https://btc-vmsv.onrender.com"]
-else:
-    CSRF_TRUSTED_ORIGINS = []
-# -------------------------------------------------------------------
+
+# CSRF trusted origins
+CSRF_TRUSTED_ORIGINS = [
+    "https://btc-vmsv.onrender.com",
+]
+
+# If you expect Render to give you a custom hostname, add it too
+if RENDER_EXTERNAL_HOSTNAME:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_EXTERNAL_HOSTNAME}")
 # Applications
 # -------------------------------------------------------------------
 INSTALLED_APPS = [
